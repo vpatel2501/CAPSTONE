@@ -13,7 +13,7 @@ export class SignupComponent {
   // constructor(private authService: AuthService){}
 
   onSubmit(name: string, email: string, password: string){
-    // this.authService.signupUser()
-    console.log(name);
+    // this.authService.signupUser(name, email, password)
+    console.log(email) 
   }
 }

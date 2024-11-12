@@ -10,8 +10,8 @@ export class AuthService {
 
         const authData: AuthModel = {name: name, email: email, password: password};
 
-        this.http.post('http://localhost:27017/sign-up/', authData).subscribe(res => {
-            console.log(res);
-        })
+        // this.http.post('http://localhost:27017/sign-up/', authData).subscribe(res => {
+        //     console.log(res);
+        // })
     }
 }
