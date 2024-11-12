@@ -16,7 +16,7 @@ router.post("/test", async (req,res) => {
 })
 
 router.post("/testupdate", async (req,res) => {
-  const user = await UserModel.findOneAndUpdate({name:"veere 22 2n"},req.body,{new:true});
+  const user = await UserModel.findOneAndUpdate({name:"Veeren Pasots"},req.body,{new:true});
   res.send("Updated");
 })
 
