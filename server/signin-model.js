@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
-    name: {type: String},
-    email: {type: String, required: true},
-    password: {type: String, required: true}
+const addProduct = mongoose.Schema({
+    productID: {type: Number},
+    receipes: {type: Array},
+    notificationLog: {type: Array}
     },
     {
         versionKey: false,
     }
 )
 
-export default mongoose.model("SigninModel", userSchema);
+export default mongoose.model("Signin", addProduct);

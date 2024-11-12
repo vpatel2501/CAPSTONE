@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-// import { AuthService } from '../shared/authService';
+import { HttpClient } from '@angular/common/http';
+import { SignUpModel } from '../shared/signUpModel';
 
 @Component({
   selector: 'app-signup',
@@ -10,10 +11,14 @@ import { Component } from '@angular/core';
 })
 export class SignupComponent {
 
-  // constructor(private authService: AuthService){}
+  constructor(private http: HttpClient){}
 
   onSubmit(name: string, email: string, password: string){
-    // this.authService.signupUser(name, email, password)
-    console.log(email) 
+    const newUser: SignUpModel = {name: name, email: email, password: password}
+    console.log(newUser)
+
+    this.http.post("http://localhost:3000/test",newUser).subscribe(res =>
+      console.log(res)
+    )
   }
 }

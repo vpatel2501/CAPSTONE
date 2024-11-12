@@ -10,9 +10,13 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    origin: "http://localhost:4200",
+    })
+    );
 app.use(routes);
 
-mongoose.connect("mongodb://localhost:27017/Users")
+mongoose.connect("mongodb://localhost:27017/main")
 .then(() => console.log('Connected Successfully'))
 .catch((err) => { console.error(err); });
 
@@ -23,15 +27,10 @@ mongoose.connection.on("error", (err) => {
     console.error(`connection error: ${err}`);
     });
 
-// const dbInput  = new UserModel ({
-//     name: "Veeren",
-//     email: "vpate075@uottawa.ca",
-//     password: "spice123"
-// })
-
 app.get("/", async (req, res) => {
     try{
         const users = await UserModel.find({});
+        console.log(users);
         res.send(users);
     }
     catch(error){

@@ -1,5 +1,6 @@
 import express from "express";
 import UserModel from "./user-model.js";
+import Product from "./signin-model.js";
 const router = express.Router();
 
 router.post("/test", async (req,res) => {
@@ -15,7 +16,7 @@ router.post("/test", async (req,res) => {
 })
 
 router.post("/testupdate", async (req,res) => {
-  const user = await UserModel.findOneAndUpdate({name:"ver"},req.body,{new:true});
+  const user = await UserModel.findOneAndUpdate({name:"veere 22 2n"},req.body,{new:true});
   res.send("Updated");
 })
 
