@@ -17,8 +17,8 @@ export class SignupComponent {
     const newUser: SignUpModel = {name: name, email: email, password: password}
     console.log(newUser)
 
-    this.http.post("http://localhost:3000/test",newUser).subscribe(res =>
+    this.http.post("http://localhost:3000/signup",newUser).subscribe(res => {
       console.log(res)
-    )
+    })
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http';
+import { SignInModel } from '../shared/signInModel';
 
 @Component({
   selector: 'app-signin',
@@ -10,18 +10,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './signin.component.css'
 })
 export class SigninComponent {
-  loginForm: FormGroup<{ username: FormControl<string | null>; password: FormControl<string | null>; }> | undefined;
 
-  
+  constructor(private http: HttpClient){}
 
-  // ngOnInit(): void {
-  //   this.loginForm = new FormGroup({
-  //     'username': new FormControl('', [Validators.required]),
-  //     'password': new FormControl('', [Validators.required])
-  //   })
-  // }
+  onSubmit(email: string, password: string){
+    const authUser: SignInModel = {email: email, password: password}
+    console.log(authUser);
 
-  onSubmit(){
-    console.log(this.loginForm);
+    this.http.post("http://localhost:3000/signin",authUser).subscribe(res => {
+      console.log(res)
+    })
   }
 }
