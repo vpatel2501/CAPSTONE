@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SignInModel } from '../shared/signInModel';
 
@@ -11,14 +11,21 @@ import { SignInModel } from '../shared/signInModel';
 })
 export class SigninComponent {
 
-  constructor(private http: HttpClient){}
+  private token: string;
+  constructor(private http: HttpClient){}  
+
+
+  getToken(){
+    return this.token;
+  }
+
+ 
 
   onSubmit(email: string, password: string){
     const authUser: SignInModel = {email: email, password: password}
-    console.log(authUser);
 
-    this.http.post("http://localhost:3000/signin",authUser).subscribe(res => {
-      console.log(res)
+    this.http.post<{token: string}>("http://localhost:3000/signin",authUser).subscribe(res => {
+      this.token = res.token
     })
   }
 }

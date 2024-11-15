@@ -1,8 +1,10 @@
 import express from "express";
 import UserModel from "./user-model.js";
-const router = express.Router();
 import DeviceModel from "./device-model.js";
 import jwt from "jsonwebtoken";
+
+const router = express.Router();
+
 
 router.post("/signup", async (req,res) => {
     const addUser = new UserModel(req.body);
@@ -15,7 +17,7 @@ router.post("/signup", async (req,res) => {
     }
 })
 
-router.get("/signin", async (req,res) => {
+router.post("/signin", async (req,res) => {
 
     let userFound;
 
@@ -35,12 +37,13 @@ router.get("/signin", async (req,res) => {
                 message: "Password is incorrect"
             })
         }
-        const token = jwt.sign({email: userFound.email,userId: userFound._id},"secret_string",{expiresIn:"1h"})
-        return res.status(200).json({
-            token: token
-        })
+        if(userFound){
+            const token = jwt.sign({email: userFound.email,userId: userFound._id},"secret_string",{expiresIn:"1h"})
+            return res.status(200).json({
+                token: token
+            })
+        }
     })
-    .catch
 
 })
 

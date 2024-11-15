@@ -1,0 +1,39 @@
+<!-- <div class="container">
+    <h1>Add Recipe</h1>
+    <form>
+      <div class="input-field">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name" name="recipe-name" required>
+      </div>
+      <div class="input-field">
+        <label for="reqSpices">Required Spices:</label>
+        <textarea id="reqSpices" name="reqSpices" rows="5" placeholder="Enter spices and amount (name: amount)" #reqSpices required></textarea>
+      </div>
+      <button type="button" (click)="submitData(reqSpices.value)">Add</button>
+    </form>
+  </div> -->
+
+  <div class="container">
+    <h3>Dynamic Input Fields</h3>
+  
+    <!-- Dynamically render input fields -->
+    <div *ngFor="let sField of inputSpice; let i = index">
+      <div class="input-group">
+        <!-- Conditional rendering based on input type -->
+        <div>
+          <input type="text" [(ngModel)]="inputSpice[i]" placeholder="Enter spice name" />
+          <!-- <input type="number" [(ngModel)]="inputAmount[i]" placeholder="Enter spice amount" /> -->
+        </div>        
+        <!-- Remove button -->
+        <button (click)="removeInput(i)">Remove</button>
+      </div>
+    </div>
+  
+    <!-- Buttons to add different types of input fields -->
+    <button (click)="addTextInput()">Add Text Input</button>
+    <!-- <button (click)="addTextInput()">Add Number Input</button> -->
+  
+    <!-- Submit Button -->
+    <button (click)="submitData()">Submit</button>
+  </div>
+  
