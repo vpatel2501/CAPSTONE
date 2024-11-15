@@ -1,6 +1,7 @@
 import express from "express";
 import UserModel from "./user-model.js";
 import DeviceModel from "./device-model.js";
+import RecipeModel from "./recipe-model.js"
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
@@ -55,6 +56,17 @@ router.post("/addDevice", async (req,res) => {
     }
     catch (error){
         res.status(500).send(error);
+    }
+})
+
+router.post("/addRecipe", async (req,res) => {
+    const recipeModel = new RecipeModel(req.body);
+    try {
+        await recipeModel.save();
+        res.send(recipeModel);
+    }
+    catch (error){
+        res.status(401).send(error);
     }
 })
 
