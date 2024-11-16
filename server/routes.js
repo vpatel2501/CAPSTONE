@@ -59,6 +59,16 @@ router.post("/addDevice", async (req,res) => {
     }
 })
 
+router.get("/recipeView", async (req,res) => {
+    try {
+        const recipes = await RecipeModel.find();
+        res.send(recipes)
+    }
+    catch(error) {
+        res.status(500).send(error)
+    }
+})
+
 router.post("/addRecipe", async (req,res) => {
     const recipeModel = new RecipeModel(req.body);
     try {

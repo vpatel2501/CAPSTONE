@@ -21,7 +21,17 @@
           </td>  
           <td>  
               Amount:  
-              <input type="text" formControlName="spiceAmount" class="form-control">  
+              <select formControlName="spiceAmount" class="form-control">
+                <option [value]="1/8">1/8</option>
+                <option [value]="1/4">1/4</option>
+                <option [value]="1/2">1/2</option>
+                <option [value]="1">1</option>
+                <option [value]="1+1/8">1 and 1/8</option>
+                <option [value]="1+1/4">1 and 1/4</option>
+                <option [value]="1+1/2">1 and 1/2</option>
+                <option [value]="2">2</option>
+              </select>
+              <!-- <input type="text" formControlName="spiceAmount" class="form-control">   -->
           </td>  
           <td>  
               <button (click)="removeSpice(i)" class="btn btn-danger">Remove</button>  

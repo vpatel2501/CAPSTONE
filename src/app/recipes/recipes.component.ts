@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
-export class RecipesComponent {    
+export class RecipesComponent {
+    
   productForm: FormGroup;  
      
   constructor(private fb:FormBuilder, private http: HttpClient) {  
@@ -29,9 +30,9 @@ export class RecipesComponent {
   newSpice(): FormGroup {  
     return this.fb.group({  
       spiceName: '',  
-      spiceAmount: '',  
+      spiceAmount: 0,  
     })  
-  }  
+  }
      
   addSpice() {  
     this.spices().push(this.newSpice());  
@@ -42,6 +43,7 @@ export class RecipesComponent {
   }  
      
   onSubmit() {     
+    console.log(this.productForm.value.spices.length)
     this.http.post("http://localhost:3000/addRecipe", this.productForm.value).subscribe(res => {
       console.log(res)
     })
