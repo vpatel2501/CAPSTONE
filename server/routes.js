@@ -6,7 +6,6 @@ import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
-
 router.post("/signup", async (req,res) => {
     const addUser = new UserModel(req.body);
     try {
@@ -25,7 +24,7 @@ router.post("/signin", async (req,res) => {
     UserModel.findOne({email:req.body.email})
     .then(user => {
         if(!user){
-            return res.status(401).json({
+            return res.status(400).json({
                 message:"User not found"
             })
         }
@@ -41,6 +40,8 @@ router.post("/signin", async (req,res) => {
         if(userFound){
             const token = jwt.sign({email: userFound.email,userId: userFound._id},"secret_string",{expiresIn:"1h"})
             return res.status(200).json({
+                userId: userFound._id,
+                email: userFound.email,
                 token: token
             })
         }

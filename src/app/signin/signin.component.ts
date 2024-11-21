@@ -12,6 +12,8 @@ import { SignInModel } from '../shared/signInModel';
 export class SigninComponent {
 
   private token: string;
+  private authenticatedEmail: string;
+  private authenticatedId: Object;
   constructor(private http: HttpClient){}  
 
 
@@ -19,13 +21,24 @@ export class SigninComponent {
     return this.token;
   }
 
+  getAuthenticatedEmail() {
+    return this.authenticatedEmail
+  }
+
+  getAuthenticatedId() {
+    return this.authenticatedId
+  }
+
  
 
   onSubmit(email: string, password: string){
     const authUser: SignInModel = {email: email, password: password}
 
-    this.http.post<{token: string}>("http://localhost:3000/signin",authUser).subscribe(res => {
+    this.http.post<{userId: Object,email: string, token: string}>("http://localhost:3000/signin",authUser).subscribe(res => {
+      this.authenticatedId = res.userId
+      this.authenticatedEmail = res.email
       this.token = res.token
+      location.assign("authenticated/home")
     })
   }
 }
