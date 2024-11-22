@@ -53,14 +53,30 @@ router.post("/addDevice", async (req,res) => {
     const deviceModel = new DeviceModel(req.body);
     try {
         await deviceModel.save();
-        res.send(deviceModel);
     }
     catch (error){
         res.status(500).send(error);
     }
+
+    UserModel.findOneAndUpdate({email:req.body.email},{productID:req.body.productID}).
+    then(result => {
+        console.log(result)
+    })
 })
 
-router.get("/recipeView", async (req,res) => {
+router.get("/viewDevice", async (req,res) => {
+    try{
+        const device = await DeviceModel.findOne({productID: req.body.productID});
+        res.json({
+            spice1: device.spice1
+        })
+    }
+    catch(error){
+        res.status(500).send(error)
+    }
+})
+
+router.get("/viewRecipes", async (req,res) => {
     try {
         const recipes = await RecipeModel.find();
         res.send(recipes)

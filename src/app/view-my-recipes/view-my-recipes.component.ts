@@ -11,12 +11,12 @@ import { NgFor } from '@angular/common';
   styleUrl: './view-my-recipes.component.css'
 })
 export class ViewMyRecipesComponent {
-  private apiUrl = 'http://localhost:3000/recipeView';
+  private apiUrl = 'http://localhost:3000/viewRecipes';
   recipes: any[] = [];
   constructor(private http: HttpClient) {}
 
   getRecipes(): Observable<any> {    
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get(this.apiUrl);
   }
 
   ngOnInit() {

@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { RecipesComponent } from './recipes/recipes.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
-
+import { AddDeviceComponent } from './add-device/add-device.component';
+import { ViewDeviceComponent } from './view-device/view-device.component';
 
 export const routes: Routes = [
     {path:"", component:WelcomepageComponent},
@@ -17,7 +18,9 @@ export const routes: Routes = [
         children: [
             {path:"home", component: HomeComponent},
             {path:"viewRecipes", component: ViewMyRecipesComponent},  
-            {path:"recipes", component: RecipesComponent}
+            {path:"recipes", component: RecipesComponent},
+            {path:"deviceView",component: ViewDeviceComponent},
+            {path:"addDevice", component: AddDeviceComponent}
         ]
     },
 ];
