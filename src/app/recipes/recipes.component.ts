@@ -30,7 +30,7 @@ export class RecipesComponent {
   newSpice(): FormGroup {  
     return this.fb.group({  
       spiceName: '',  
-      spiceAmount: 0,  
+      spiceMeasurement: '',  
     })  
   }
      
