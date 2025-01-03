@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SignInModel } from '../shared/signInModel';
 
 @Component({
@@ -38,6 +38,9 @@ export class SigninComponent {
       this.authenticatedId = res.userId
       this.authenticatedEmail = res.email
       this.token = res.token
+      const httpHeaders: HttpHeaders = new HttpHeaders({
+        Authorization: 'Bearer JWT-token'
+    });
       location.assign("authenticated/home")
     })
   }

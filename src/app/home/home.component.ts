@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewMyRecipesComponent } from "../view-my-recipes/view-my-recipes.component";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,4 @@ import { ViewMyRecipesComponent } from "../view-my-recipes/view-my-recipes.compo
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
 }

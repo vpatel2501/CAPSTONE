@@ -16,7 +16,7 @@ app.use((req,res,next) => {
   next();
 })
 
-mongoose.connect("mongodb://localhost:27017/main")
+mongoose.connect("mongodb+srv://spiceDB:spice123@spicedb.7scmb.mongodb.net/?retryWrites=true&w=majority&appName=spiceDB")
 .then(() => console.log('Connected Successfully'))
 .catch((err) => { console.error(err); });
 

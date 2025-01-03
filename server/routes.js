@@ -49,6 +49,19 @@ router.post("/signin", async (req,res) => {
 
 })
 
+router.get("/getAuthInfo", async (req,res, next) => {
+    try {
+        const token = req.headers.get("authorization");
+        res.send(token)
+        next();
+    }
+    catch(error){
+        res.status(401).json({
+            message:"You are not authenicated"
+        })
+    }
+})
+
 router.post("/addDevice", async (req,res) => {
     const deviceModel = new DeviceModel(req.body);
     try {
