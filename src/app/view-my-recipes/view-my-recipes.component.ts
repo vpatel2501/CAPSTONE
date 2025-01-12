@@ -21,7 +21,6 @@ export class ViewMyRecipesComponent {
 
   ngOnInit() {
     this.getRecipes().subscribe((data) => {
-      console.log(data)
       this.recipes = data;
     });
   }

@@ -51,9 +51,10 @@ router.post("/signin", async (req,res) => {
 
 router.get("/getAuthInfo", async (req,res, next) => {
     try {
-        const token = req.headers.get("authorization");
-        res.send(token)
-        next();
+        // const token = req.headers.authorization;
+        // console.log(token)
+        // res.send(token)
+        // next();
     }
     catch(error){
         res.status(401).json({

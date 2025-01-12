@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SignInModel } from '../shared/signInModel';
+import { constrainedMemory } from 'node:process';
 
 @Component({
   selector: 'app-signin',
@@ -38,10 +39,13 @@ export class SigninComponent {
       this.authenticatedId = res.userId
       this.authenticatedEmail = res.email
       this.token = res.token
+      console.log(this.token)
       const httpHeaders: HttpHeaders = new HttpHeaders({
-        Authorization: 'Bearer JWT-token'
-    });
-      location.assign("authenticated/home")
+        Authorization: 'Hi'
+      });
+      console.log(httpHeaders.get("Authorization"))
+      // this.http.post(url, body, { headers: httpHeaders });
+      // location.assign("authenticated/home")
     })
   }
 }
